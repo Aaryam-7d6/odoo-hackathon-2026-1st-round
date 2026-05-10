@@ -1,4 +1,4 @@
-export default function Card({ children, className = '', hover = false, ...props }) {
+export function Card({ children, className = '', hover = false, ...props }) {
   return (
     <div
       className={`bg-surface rounded-2xl border border-border shadow-lg ${
