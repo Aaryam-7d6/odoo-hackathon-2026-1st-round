@@ -81,4 +81,8 @@ export const notesApi = {
   delete: (id) => api.delete(`/notes/${id}`),
 };
 
+export const usersApi = {
+  updateProfile: (data) => api.put('/users/me', data),
+};
+
 export default api;

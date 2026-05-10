@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { User, Mail, Globe, Save } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Card, CardBody, Button, Input } from '../components/ui';
+import { usersApi, authApi } from '../api';
 import useAuthStore from '../store/authStore';
 
 export default function ProfilePage() {
@@ -9,21 +10,30 @@ export default function ProfilePage() {
   const [name, setName] = useState(user?.name || '');
   const [language, setLanguage] = useState(user?.language_pref || 'en');
   const [saving, setSaving] = useState(false);
+  const [nameError, setNameError] = useState('');
 
   const handleSave = async () => {
     if (!name.trim()) {
-      toast.error('Name is required');
+      setNameError('Name is required');
       return;
     }
+    setNameError('');
     setSaving(true);
     try {
-      updateUser({ ...user, name, language_pref: language });
+      const res = await usersApi.updateProfile({ name, language_pref: language });
+      updateUser(res.data);
+      await authApi.getMe().then(r => updateUser(r.data));
       toast.success('Profile updated');
-    } catch {
-      toast.error('Failed to update profile');
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Failed to update profile');
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    if (nameError) setNameError('');
   };
 
   return (
@@ -46,8 +56,8 @@ export default function ProfilePage() {
             <Input
               label="Full Name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              error={!name.trim() ? 'Name is required' : ''}
+              onChange={handleNameChange}
+              error={nameError}
             />
 
             <Input
@@ -92,7 +102,7 @@ export default function ProfilePage() {
             </div>
             <div className="flex justify-between">
               <span className="text-text-secondary">Account created</span>
-              <span className="text-text-primary">Since registration</span>
+              <span className="text-text-primary">{user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}</span>
             </div>
           </div>
         </CardBody>

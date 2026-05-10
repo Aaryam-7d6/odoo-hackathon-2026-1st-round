@@ -43,6 +43,7 @@ export default function AppRouter() {
             <Route element={<CitySearchPage />} path="/search" />
             <Route element={<BudgetPage />} path="/budget" />
             <Route element={<BudgetPage />} path="/budget/:tripId" />
+            <Route element={<PackingPage />} path="/packing" />
             <Route element={<PackingPage />} path="/packing/:tripId" />
             <Route element={<NotesPage />} path="/notes/:tripId" />
             <Route element={<ProfilePage />} path="/profile" />
