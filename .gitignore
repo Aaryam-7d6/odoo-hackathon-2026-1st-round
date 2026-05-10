@@ -10,5 +10,5 @@ dist/
 .cache/
 .turbo/
 *.log
-
+Agents.md
 
