@@ -5,9 +5,11 @@ node_modules/
 *.db
 *.db-journal
 venv/
-.env.example
+#.env.example
 .DS_Store
 dist/
 .cache/
 .turbo/
 *.log
+
+
