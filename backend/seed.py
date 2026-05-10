@@ -22,7 +22,7 @@ def seed():
                 password_hash=get_password_hash('Test@1234')
             )
             db.add(test_user)
-            db.flush()
+            db.commit()
             print("Seeded test user: test@traveloop.com / Test@1234")
 
         if db.query(City).count() > 0:

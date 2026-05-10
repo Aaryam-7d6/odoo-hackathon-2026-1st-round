@@ -26,7 +26,7 @@ async def list_trips(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    return db.query(Trip).filter(Trip.user_id == current_user.id).offset(skip).limit(limit).order_by(Trip.updated_at.desc()).all()
+    return db.query(Trip).filter(Trip.user_id == current_user.id).order_by(Trip.updated_at.desc()).offset(skip).limit(limit).all()
 
 
 @router.post("", response_model=TripResponse, status_code=status.HTTP_201_CREATED)
