@@ -30,7 +30,7 @@ Register → Create a trip → Add cities as stops → Discover and assign activ
 |------|------|
 | Aarya R. Thakar | Lead Developer - Architecture, Backend and AI |
 | Ansh B. Patel | Frontend Developer + Backend|
-| Darshan B. Kyada | Frontend Developer |
+| Darshan B. Kyada | Frontend & Backend Developer |
 | Elvis T. Fernandes | Database and  Integration |
 
 ---
