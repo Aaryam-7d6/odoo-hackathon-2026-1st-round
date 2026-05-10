@@ -28,7 +28,7 @@ Register → Create a trip → Add cities as stops → Discover and assign activ
 
 | Name | Role |
 |------|------|
-| Aarya (Aaryam) | Lead Developer — Architecture |
+| Aarya (Aaryam) | Lead Developer — Architecture, Backend and AI |
 | Ansh B. Patel | Frontend Developer |
 | Darshan B. Kyada | Frontend Developer |
 | Elvis T. Fernandes | Backend + Integration |
