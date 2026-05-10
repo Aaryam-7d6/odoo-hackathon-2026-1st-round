@@ -3,8 +3,10 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.database import SessionLocal, init_db
+from app.core.security import get_password_hash
 from app.models.city import City
 from app.models.activity import Activity
+from app.models.user import User
 
 
 def seed():
@@ -12,6 +14,17 @@ def seed():
     db = SessionLocal()
 
     try:
+        test_user = db.query(User).filter(User.email == 'test@traveloop.com').first()
+        if not test_user:
+            test_user = User(
+                email='test@traveloop.com',
+                name='Test User',
+                password_hash=get_password_hash('Test@1234')
+            )
+            db.add(test_user)
+            db.flush()
+            print("Seeded test user: test@traveloop.com / Test@1234")
+
         if db.query(City).count() > 0:
             print("Seed data already exists. Skipping.")
             return

@@ -26,7 +26,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-md border-b border-border z-40 px-4">
         <div className="flex items-center justify-between h-full max-w-screen-xl mx-auto">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/travel-poopm.png" alt="Traveloop" className="w-10 h-10 rounded-xl" />
+            <img src="/travel-poopm.png" alt="Traveloop" className="h-8 w-auto object-contain" />
             <span className="text-xl font-display font-bold text-primary">Traveloop</span>
           </Link>
 

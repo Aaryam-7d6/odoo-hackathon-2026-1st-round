@@ -62,6 +62,15 @@ The frontend runs at **http://localhost:5173**
 2. Register a new account
 3. Start creating trips and building itineraries
 
+### Test Account (for Jury)
+
+A pre-seeded test user is available:
+
+- **Email:** `test@traveloop.com`
+- **Password:** `Test@1234`
+
+> Note: The test user is seeded automatically by running `python seed.py`.
+
 ## Features
 
 - Multi-city itinerary builder with drag-to-reorder

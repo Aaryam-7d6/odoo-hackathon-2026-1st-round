@@ -12,7 +12,14 @@ import useAuthStore from '../store/authStore';
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
   email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters').max(128, 'Password must be less than 128 characters'),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(128, 'Password must be less than 128 characters')
+    .regex(/[A-Z]/, 'Password must include at least one uppercase letter')
+    .regex(/[a-z]/, 'Password must include at least one lowercase letter')
+    .regex(/[0-9]/, 'Password must include at least one number')
+    .regex(/[!@#$%^&*(),.?":{}|<>]/, 'Password must include at least one special character'),
 });
 
 export default function RegisterPage() {
@@ -44,7 +51,7 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <img src="/travel-poopm.png" alt="Traveloop" className="w-20 h-20 rounded-2xl mx-auto mb-4" />
+          <img src="/travel-poopm.png" alt="Traveloop" className="h-16 w-auto object-contain mx-auto mb-4" />
           <h1 className="text-4xl font-display font-bold text-primary mb-2">Traveloop</h1>
           <p className="text-text-secondary">Plan your perfect journey</p>
         </div>
@@ -79,7 +86,7 @@ export default function RegisterPage() {
             <Input
               {...register('password')}
               type={showPassword ? 'text' : 'password'}
-              placeholder="Password (min 8 characters)"
+              placeholder="Password (min 8 chars, include number, uppercase, lowercase, special)"
               className="pl-12 pr-12"
               error={errors.password?.message}
             />

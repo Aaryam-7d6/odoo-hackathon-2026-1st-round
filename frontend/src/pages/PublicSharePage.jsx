@@ -43,7 +43,7 @@ export default function PublicSharePage() {
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="max-w-3xl mx-auto space-y-6 animate-fade-in">
         <div className="text-center mb-8">
-          <img src="/travel-poopm.png" alt="Traveloop" className="w-20 h-20 rounded-2xl mx-auto mb-4" />
+          <img src="/travel-poopm.png" alt="Traveloop" className="h-16 w-auto object-contain mx-auto mb-4" />
           <h1 className="text-4xl font-display font-bold text-primary mb-2">Traveloop</h1>
           <p className="text-text-secondary">Shared Itinerary</p>
         </div>
